@@ -20,6 +20,28 @@ O script **não cria arquivos**, apenas utiliza arquivos temporários durante a 
 
 ## 📥 Instalação
 
+### 🔹 Via APT (Recomendado)
+
+Adicione o repositório oficial:
+
+```bash
+echo "deb [trusted=yes] https://igorcoutooli.github.io/scan-port/repo stable main" \
+ | sudo tee /etc/apt/sources.list.d/scan-port.list
+```
+
+Atualize a lista de pacotes:
+```
+sudo apt update
+```
+
+Instale o Scan Port:
+```
+sudo apt install scan-port
+```
+
+---
+
+### 🔹 Instalação Manual (Alternativa)
 Clone o repositório:
 
 ```bash
