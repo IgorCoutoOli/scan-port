@@ -1,12 +1,12 @@
 Package: scan-port
-Version: 1.0.0
+Version: 1.0.1
 Architecture: amd64
 Maintainer: Igor Oliveira igor.couto.oliveira@gmail.com
-Filename: ./dists/stable/main/binary-amd64/scan-port_1.0.0_amd64.deb
-Size: 2168
-MD5sum: e29450658fae96dafb5adb961c869807
-SHA1: 53b0de0797560b5048e40764f0e8c6c2f666a7fa
-SHA256: 6ccc8afede303299b37db879279221c05520f4acf4546f0fbc55a018da78cd13
+Filename: dists/stable/main/binary-amd64/scan-port_1.0.1_amd64.deb
+Size: 3106
+MD5sum: eb561488f74e4f1a238ba426d745b82a
+SHA1: 030f425827a42a2a80f25d698026c8bb34c689ca
+SHA256: e4a92d616b5ef4a2941ac73763228955cf261d6d3c76d3eb02695ea83d5988f2
 Section: utils
 Priority: optional
 Description: Scanner de portas TCP para redes IPv4
