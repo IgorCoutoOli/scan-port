@@ -1,7 +1,25 @@
-Origin: scan-port
-Label: scan-port
-Suite: stable
-Codename: stable
-Architectures: amd64
-Components: main
-Description: Repositório APT do scan-port
+Date: Mon, 22 Dec 2025 19:32:14 +0000
+MD5Sum:
+ b9f52f70043be06395af48dd7ace9fda               38 Release
+ a8b8f351cea4afda46409bd3273a4944             1732 main/Release
+ d556d1597f3ab4b8ffc10fc3bb331cbc              476 main/binary-amd64/Packages
+ e17512f8b5f83caf7caa7dcdd7b67de6              372 main/binary-amd64/Packages.gz
+ 63c2764327440dccc58142acc142116d             1204 main/binary-amd64/Release
+SHA1:
+ 69c004f3570130a5b33301d5d93b0ddb62b7332a               38 Release
+ 7e6aa2f562d6bd26721e27c71726ece878ebe910             1732 main/Release
+ 897619f03d65c9b2db8c9129cd83894fc6c4224b              476 main/binary-amd64/Packages
+ 7b795f927f3e919aba3a0c9eaa62cdb7638dfb09              372 main/binary-amd64/Packages.gz
+ 03138577f028f4b47ca5a15e795890110a732322             1204 main/binary-amd64/Release
+SHA256:
+ e8a2c80c58c36370d9d6df018f53d2ebbc8cdeb3dd5f3afef2d3b1bfa94730a0               38 Release
+ b617b2bf517a62cf91685393419ad84393ae1773a8ae473ddcbc2fc7723c84d3             1732 main/Release
+ 8b62c3b5efa28220e4363fa4134da730633908e7edc293d15c231e10900f0169              476 main/binary-amd64/Packages
+ dbdd7ebeb0c143f311a9e3215705ede1eb1d874edcba379ddf6ba7605f28f166              372 main/binary-amd64/Packages.gz
+ 4996c5cf3bc037dc029139a0521127ee1125ddc65e48f577572d2b1f25086b89             1204 main/binary-amd64/Release
+SHA512:
+ 906393b70cc52427baedadc19c9f5966979c5446c5da9efe88bab4258a16e77c1684dc821959c71c5f5f92e35c7f2c150dcd6aa60883016c183389f7713a1468               38 Release
+ a9c35b044cd44f740a39bec7ea0449793f40ec0a9ad8aa827d37ff7008c1d085eb2cf6762e875e951f153850683debc31be8548ab1ccb5ed2a7b33519566afea             1732 main/Release
+ 15610bdeeafaf7638f2a74aa383c60582427a7a47efc58c4c6f3025e8b5253314547ba3bece1fd643f98e8ec7260b9724deb252f3e490859baaba9fc75f5a6ba              476 main/binary-amd64/Packages
+ 022f35a10f3d8b2bbbb9145dc942823c0e86d8fe966da3c0fe058a6dcc213cc6a1453fea193611834493f364fd32b1845fa83c0f6c8ba55447be7ddb820f14d6              372 main/binary-amd64/Packages.gz
+ 87b0d01599feb7a3d8a48ea75be68b883e7e8b5f4269d92418b1bc18472d9cdd16dc19e5450169e9d04a504da62e5e4b525c62167584cc15783e886ec3403309             1204 main/binary-amd64/Release
