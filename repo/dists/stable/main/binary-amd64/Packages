@@ -2,7 +2,7 @@ Package: scan-port
 Version: 1.0.1
 Architecture: amd64
 Maintainer: Igor Oliveira igor.couto.oliveira@gmail.com
-Filename: /dists/stable/main/binary-amd64/scan-port_1.0.1_amd64.deb
+Filename: dists/stable/main/binary-amd64/scan-port_1.0.1_amd64.deb
 Size: 3106
 MD5sum: eb561488f74e4f1a238ba426d745b82a
 SHA1: 030f425827a42a2a80f25d698026c8bb34c689ca
