@@ -9,11 +9,11 @@ O script **não cria arquivos**, apenas utiliza arquivos temporários durante a 
 
 ## ✨ Recursos
 
-- 🚀 Suporte a multithreading (padrão: **254 threads**)
+- 🚀 Suporte a multithreading (padrão: **5 threads**)
 - 🔍 Teste de portas via **netcat (nc)**
 - 📡 Verificação de atividade via **ping**
 - 🧭 Detecção automática de máscara e faixa de IP
-- ⚙️ Aceita CIDR ou formatos simplificados (`192.168.1`, `10`, etc.)
+- ⚙️ Aceita CIDR, netmask ou formatos simplificados (`192.168.1`, `10`, etc.)
 - 🔒 Proteção que impede scans acidentais em redes muito grandes (com `--force`)
 
 ---
@@ -74,6 +74,7 @@ scan [OPÇÕES] <rede> <porta>
 ```bash
 scan 192.168.1.0/24 80
 scan 192.168.1 443
+scan 192.168.1.0/255.255.255.0 3306
 scan --open 10.0 22
 scan --list 192.168 3389
 scan -nt 100 172.16 3306
@@ -88,17 +89,18 @@ scan --force 10 80
 |-------|-----------|
 | `-h`, `--help` | Exibe a ajuda |
 | `--no-thread` | Executa sequencialmente (equivale a `-nt 1`) |
-| `-nt N` | Define o número máximo de threads (padrão: 254) |
+| `-nt N` | Define o número máximo de threads (padrão: 5) |
 | `-o`, `--open` | Exibe somente hosts com porta aberta |
 | `-L`, `--list` | Lista todos os hosts com status: OPEN / CLOSED / NOT PING |
 | `--force` | Ignora restrição de proteção para redes grandes |
+| `--output` | Salva o resultado em um arquivo ao invés de exibir na tela, obrigatório para redes maiores que /23. |
 
 ---
 
 ## 🧠 Funcionamento Interno
 
 1. Interpreta automaticamente a rede informada:
-   - Ex.: 192.168.1.0/24, 192.168.1, 10, etc.
+   - Ex.: 192.168.1.0/255.255.255.0, 192.168.1.0/24, 192.168.1, 10, etc.
 2. Calcula o número de octetos variáveis baseado na máscara.
 3. Para cada IP:
    - Testa conectividade via `ping -W1`
@@ -108,6 +110,7 @@ scan --force 10 80
    - **CLOSED** – porta fechada
    - **NOT PING** – host não responde ICMP
 5. Os resultados são exibidos diretamente no terminal.
+6. Exibe os resultados no terminal ou salva em arquivo quando `--output` é utilizado.
 
 ---
 
