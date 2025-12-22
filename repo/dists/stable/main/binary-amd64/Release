@@ -1,17 +1,1 @@
-Date: Mon, 22 Dec 2025 19:32:05 +0000
-MD5Sum:
- d556d1597f3ab4b8ffc10fc3bb331cbc              476 Packages
- e17512f8b5f83caf7caa7dcdd7b67de6              372 Packages.gz
- 133b2181201d30cc46e892c06a025343               38 Release
-SHA1:
- 897619f03d65c9b2db8c9129cd83894fc6c4224b              476 Packages
- 7b795f927f3e919aba3a0c9eaa62cdb7638dfb09              372 Packages.gz
- b64e30329b46bcea624d691e08eff8bc5000cf7f               38 Release
-SHA256:
- 8b62c3b5efa28220e4363fa4134da730633908e7edc293d15c231e10900f0169              476 Packages
- dbdd7ebeb0c143f311a9e3215705ede1eb1d874edcba379ddf6ba7605f28f166              372 Packages.gz
- 5cc880e31aa4574b47a4b9adbd662baeab7246abda98acbe50d0c361f431d2b6               38 Release
-SHA512:
- 15610bdeeafaf7638f2a74aa383c60582427a7a47efc58c4c6f3025e8b5253314547ba3bece1fd643f98e8ec7260b9724deb252f3e490859baaba9fc75f5a6ba              476 Packages
- 022f35a10f3d8b2bbbb9145dc942823c0e86d8fe966da3c0fe058a6dcc213cc6a1453fea193611834493f364fd32b1845fa83c0f6c8ba55447be7ddb820f14d6              372 Packages.gz
- c61e58964646934a7f5f1d86f55c832374800b307ed4d2ba59a843b84a7661d3c35ab468f793fba2d68c444256691a9b331a8cf0e31296cfc85c0eb62ab9b63a               38 Release
+Architecture: amd64
