@@ -1,33 +1,37 @@
 #!/bin/bash
 set -euo pipefail
 
-THREADS=254
-NO_THREAD=0
-MODE_OPEN=0
-LIST_MODE=0
-FORCE=0
+# CONFIGURAÇÕES PADRÃO
+THREADS=254 # Número padrão de threads (paralelismo)
+NO_THREAD=0 # Flag para modo sequencial
+MODE_OPEN=0 # Mostrar somente hosts com porta aberta
+LIST_MODE=0 # Listar todos os hosts com status (open/closed/not ping)
+FORCE=0     # Ignorar avisos de segurança
 
-TMP_NOTPING=$(mktemp)
-TMP_OPEN=$(mktemp)
-TMP_CLOSED=$(mktemp)
+# ARQUIVOS TEMPORÁRIOS
+TMP_NOTPING=$(mktemp)   # Hosts que não responderam ao ping
+TMP_OPEN=$(mktemp)      # Hosts com porta aberta
+TMP_CLOSED=$(mktemp)    # Hosts com porta fechada
 
+# Função de limpeza de arquivos temporários
 cleanup() {
     rm -f "$TMP_NOTPING" "$TMP_OPEN" "$TMP_CLOSED"
 }
 trap cleanup EXIT
 
+# Função de exibição de ajuda
 show_help() {
     cat <<EOF
-Scan Barramento – Scanner de porta TCP em redes IPv4
+Scan Port – Scanner de porta TCP em redes IPv4
 
 Uso:
-  scan [OPÇÕES] <rede> <porta>
+  scan-port [OPÇÕES] <rede> <porta>
 
 Exemplos:
-  scan 192.168.1.0/24 80       Escaneia a porta 80 em toda a /24
-  scan 192.168.1 443           Detecta máscara automaticamente
-  scan --open 10.0 22          Exibe somente hosts com porta aberta
-  scan -nt 50 172.16 3306      Usa até 50 threads
+  scan-port 192.168.1.0/24 80       Escaneia a porta 80 em toda a /24
+  scan-port 192.168.1 443           Detecta máscara automaticamente
+  scan-port --open 10.0 22          Exibe somente hosts com porta aberta
+  scan-port -nt 50 172.16 3306      Usa até 50 threads
 
 Opções:
   -h, --help
@@ -45,9 +49,9 @@ Opções:
 
   -L, --list
       Lista todos os IPs encontrados com o status:
-        • OPEN       Porta aberta
-        • CLOSED     Porta fechada
-        • NOT PING   Sem resposta ao ping
+        • Open         Porta aberta
+        • Closed       Porta fechada
+        • Don't ping   Sem resposta ao ping
 
   --force
       Ignora avisos de segurança para redes grandes (ex.: /8).
@@ -57,6 +61,7 @@ EOF
     exit 0
 }
 
+# Análise de argumentos
 ARGS=()
 while (( "$#" )); do
     case "$1" in
@@ -71,11 +76,13 @@ while (( "$#" )); do
     esac
 done
 
+# Validação de argumentos
 if [ "${#ARGS[@]}" -lt 2 ]; then
     echo "Uso incorreto."
     exit 1
 fi
 
+# Análise da rede e porta
 NETWORK_RAW="${ARGS[0]}"
 PORT="${ARGS[1]}"
 
@@ -87,6 +94,7 @@ else
     MASK=""
 fi
 
+# Validação de porta
 IFS='.' read -r -a OCT <<< "$BASE"
 OCT_N=${#OCT[@]}
 
@@ -99,6 +107,7 @@ if [ -z "$MASK" ]; then
     esac
 fi
 
+# Validação de máscara
 FIXED_OCT=$(( MASK / 8 ))
 (( FIXED_OCT > 4 )) && FIXED_OCT=4
 
@@ -112,6 +121,7 @@ VAR_OCT=$((4 - FIXED_OCT))
 
 [[ "$NO_THREAD" -eq 1 ]] && THREADS=1
 
+# Função de escaneamento
 scan() {
     IP="$1"
 
@@ -130,6 +140,7 @@ scan() {
 export -f scan
 export PORT TMP_NOTPING TMP_OPEN TMP_CLOSED
 
+# Geração de IPs a partir do prefixo
 gen_ips() {
     case "$VAR_OCT" in
         0) echo "$PREFIX_STR" ;;
@@ -148,12 +159,14 @@ gen_ips() {
     esac
 }
 
+# Sequencial ou multithread?
 if [ "$THREADS" -le 1 ]; then
     while read -r ip; do scan "$ip"; done < <(gen_ips)
 else
     gen_ips | xargs -P "$THREADS" -I {} bash -c 'scan "$@"' _ {}
 fi
 
+# Exibição dos resultados em modo lista
 if [ "$LIST_MODE" -eq 1 ]; then
     echo "===== Don't ping ====="
     cat "$TMP_NOTPING"
@@ -169,6 +182,7 @@ if [ "$LIST_MODE" -eq 1 ]; then
     exit 0
 fi
 
+# Exibição dos resultados em modo normal
 if [ "$MODE_OPEN" -eq 1 ]; then
     cat "$TMP_OPEN"
 else
