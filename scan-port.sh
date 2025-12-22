@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # CONFIGURAÇÕES PADRÃO
-THREADS=254     # Número padrão de threads (paralelismo)
+THREADS=5       # Número padrão de threads (paralelismo)
 NO_THREAD=0     # Flag para modo sequencial
 MODE_OPEN=0     # Mostrar somente hosts com porta aberta
 LIST_MODE=0     # Listar todos os hosts com status (open/closed/not ping)
