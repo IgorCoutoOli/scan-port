@@ -172,15 +172,16 @@ fi
 scan() {
     IP="$1"
 
-    if ! ping -c1 -W1 "$IP" >/dev/null 2>&1; then
-        echo "$IP" >> "$TMP_NOTPING"
+    if nc -z -w0.5 "$IP" "$PORT" >/dev/null 2>&1; then
+        echo "$IP" >> "$TMP_OPEN"
         return
     fi
 
-    if nc -z -w1 "$IP" "$PORT" >/dev/null 2>&1; then
-        echo "$IP" >> "$TMP_OPEN"
-    else
+    # Se não conectou, tenta ping apenas para classificar
+    if ping -c1 -W0.3 "$IP" >/dev/null 2>&1; then
         echo "$IP" >> "$TMP_CLOSED"
+    else
+        echo "$IP" >> "$TMP_NOTPING"
     fi
 }
 
