@@ -1,0 +1,7 @@
+Origin: scan-port
+Label: scan-port
+Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: Repositório APT do scan-port
