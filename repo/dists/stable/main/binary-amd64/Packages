@@ -1,0 +1,15 @@
+Package: scan-port
+Version: 1.0.0
+Architecture: amd64
+Maintainer: Igor Oliveira igor.couto.oliveira@gmail.com
+Filename: repo/dists/stable/main/binary-amd64/scan-port_1.0.0_amd64.deb
+Size: 2168
+MD5sum: e29450658fae96dafb5adb961c869807
+SHA1: 53b0de0797560b5048e40764f0e8c6c2f666a7fa
+SHA256: 6ccc8afede303299b37db879279221c05520f4acf4546f0fbc55a018da78cd13
+Section: utils
+Priority: optional
+Description: Scanner de portas TCP para redes IPv4
+ Scanner rápido, leve e multithread.
+ Usa ping + netcat para testes.
+
