@@ -45,7 +45,7 @@ sudo apt install scan-port
 Clone o repositório:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/scan-port.git
+git clone https://github.com/IgorCoutoOli/scan-port.git
 cd scan-port
 ```
 
